@@ -1,0 +1,64 @@
+ .gumb--dodaj{
+    display: flex;
+    position: relative;
+    bottom: 13%;
+    left: 68%;
+    height: 2rem;
+    width: 2rem;
+    border: var(--border);
+    border-radius:25%;
+    color: var(--text-dark);
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 1.4rem;
+    align-items: center;
+    justify-content: center;
+ }
+
+
+.gumb--dodaj:hover{
+    color: var(--text);
+    background-color: var(--accent-color);
+}
+
+.tablica{
+    max-width: 50rem;
+    width: 100%;
+    margin: 0 auto;
+    border-spacing: 0; /* cellov
+    i imaju border 1px ovo ih brise */ 
+}
+.naslov__redatelj{
+  display: flex;
+  flex-direction: column;
+}
+
+.redatelj{
+  font-size: 0.85rem;
+  font-weight: normal;
+}
+
+.tablica__cell{
+    padding: 1.25rem 1rem;
+    text-align: left;
+    border-bottom: var(--border);
+}
+.tablica__filmTitl{
+    font-weight: 600;
+}
+
+.tablica__filmRedatelj{
+    font-size: 0.85rem;
+}
+
+.tablica__prazno{
+    display: block;
+    text-align: center;
+    font-size: 1.2rem;
+    padding: 1.25rem 1rem;
+}
+
+.tablica__row:hover{
+    cursor: pointer;
+    background-color: var(--movie-link);
+}

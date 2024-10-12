@@ -1,0 +1,163 @@
+* {
+  box-sizing: border-box
+}
+
+.slajdovi {
+  display: none;
+}
+.slajdovi img {
+  width: 100%;
+  height: auto;
+  border-radius: 30px;
+}
+.slajd-kontejner {
+max-width: 50%;
+position: relative;
+margin: auto;
+width: 100%;
+height: auto;
+}
+.nazad, .naprijed {
+cursor: pointer;
+position: absolute;
+top: 50%;
+width: auto;
+padding: 16px;
+color: white;
+font-weight: bold;
+font-size: 18px;
+transition: 0.6s ease;
+border-radius: 0 5px 5px 0;
+user-select: none;
+text-decoration: none;
+}
+
+.naprijed {
+right: 0;
+border-radius: 3px 0 0 3px;
+}
+
+.nazad:hover, .naprijed:hover {
+background-color: rgba(0,0,0,0.8);
+}
+
+.tekst {
+color: #f2f2f2;
+font-size: 15px;
+padding: 8px 12px;
+position: absolute;
+bottom: 8px;
+left: 50%;
+transform: translateX(-50%);
+width: auto;
+text-align: center;
+text-decoration: none;
+text-shadow: 1px 0 0 #000, 0 -1px 0 #000, 0 1px 0 #000, -1px 0 0 #000;
+}
+.tekst:hover{
+  font-size: 17px;
+}
+
+.brojSlajd {
+color: #f2f2f2;
+font-size: 12px;
+padding: 8px 12px;
+position: absolute;
+top: 0;
+}
+
+.aktivno:hover {
+background-color: #717171;
+}
+
+
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+.uvod{
+ text-align: center;
+ margin-bottom: 30px;
+}
+.uvod span{
+ display: block;
+ max-width: 50%;
+ word-wrap: break-word;
+ margin: 0 auto;
+ text-align: center;
+ }
+.top{
+  margin-bottom: 30px;
+}
+
+
+@-webkit-keyframes fade {
+from {opacity: .4} 
+to {opacity: 1}
+}
+@keyframes fade {
+from {opacity: .4} 
+to {opacity: 1}
+}
+
+@media only screen and (max-width: 500px) {
+.nazad, .naprijed {font-size: 10px}
+}
+
+@media only screen and (max-width: 740px){
+  .tekst{
+    font-size: 12px;
+  }
+  .tekst:hover{
+    font-size: 14px;
+  }
+}
+@media only screen and (max-width: 650px){
+  .tekst{
+    font-size: 10px;
+  }
+  .tekst:hover{
+    font-size: 12px;
+  }
+  .nazad, .naprijed {font-size: 12px}
+}
+@media only screen and (max-width: 410px){
+  .tekst{
+    font-size: 8px;
+  }
+  .tekst:hover{
+    font-size: 10px;
+  }
+}
+@media only screen and (max-width: 600px){
+  .naprijed{
+    border-radius: 7px 7px 7px 7px;
+  }
+  .nazad{
+    border-radius: 7px 7px 7px 7px;
+  }
+}
+
+@media only screen and (max-width:1300px){
+  .naprijed, .nazad {
+    top: 45%;
+  }
+}
+@media only screen and (max-width:1075px){
+  .naprijed, .nazad {
+    top: 40%;
+  }
+}
+@media only screen and (max-width:655px){
+  .naprijed, .nazad {
+    top: 35%;
+  }
+}
+@media only screen and (max-width:515px){
+  .naprijed, .nazad {
+    top: 33%;
+  }
+}

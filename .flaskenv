@@ -1,0 +1,2 @@
+FLASK_APP=FilmskiFilter
+FLASK_DEBUG=1

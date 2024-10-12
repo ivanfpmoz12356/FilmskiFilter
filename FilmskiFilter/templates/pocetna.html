@@ -1,0 +1,84 @@
+{% extends "raspored.html" %}
+
+
+{% block head_content %}
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/carousel.css')}}">
+{% endblock %}
+
+{% block main_content %}
+<body>
+  <div class="uvod">
+    <span>
+      Stranica napravljena za dodavanje filmova, gledanje i davanje ocjene istim.Možete dodati film i podatke o filmu.Prijavom na stranicu možete dodati titl filma, ime redatelja, godinu izlaska filma, glumačku postavu, ostale dijelove filma, žanr filma, neki opis te video link koji će prikazati i omogućiti puštanje videa na samoj stranici dodanog filma. Na stranici omogućena registracija i prijava za praćenje vlastitih filmova i preglednost. Na ruti "FILMOVI", koja je dostupna samo prijavljenim korisnicima, možete pogledati vaše dodane filmove, urediti ih i izbrisati.
+    </span>
+  </div>
+  
+  <p class="uvod"> TOP 10 PREPORUKA:</p>
+  <div class="slajd-kontejner">
+      <div class="slajdovi fade">
+          
+          <img src="static/slike/NIGHTCRAWLER.JPG" alt="Nightcrawler film" >
+          <div >
+            <a class="tekst" href="https://www.imdb.com/title/tt2872718/" target="_blank">Nightcrawler (2014)</a>  
+      </div>
+      </div>
+      <div class="slajdovi fade">
+          <img src="static/slike/TheThing.jpg" style="width:100%">
+          <div ><a class="tekst" href="https://www.imdb.com/title/tt0084787/?ref_=nv_sr_srsg_1_tt_7_nm_0_q_the%2520thing" target="_blank">The Thing (1982)</a></div>
+      </div>
+      <div class="slajdovi fade">
+          <img src="static/slike/BladeRunner.jpg" style="width:100%">
+          <div >
+            <a class="tekst" href="https://www.imdb.com/title/tt0083658/?ref_=nv_sr_srsg_0_tt_8_nm_0_q_blade%2520runner" target="_blank">Blade Runner (1982)</a>
+          </div>
+      </div>
+      <div class="slajdovi fade">
+        <img src="static/slike/ThePrestige.jpg" style="width:100%">
+        <div >
+          <a class="tekst" href="https://www.imdb.com/title/tt0482571/?ref_=nv_sr_srsg_0_tt_8_nm_0_q_prestige" target="_blank">Prestige (2006)</a>
+        </div>
+      </div>
+      <div class="slajdovi fade">
+        <img src="static/slike/Gladiator.jpg" style="width:100%">
+        <div >
+          <a class="tekst" href="https://www.imdb.com/title/tt0172495/?ref_=nv_sr_srsg_0_tt_8_nm_0_q_gladiator" target="_blank">Gladiator (2000)</a>
+        </div>
+      </div>
+      <div class="slajdovi fade">
+        <img src="static/slike/MasterAndCommander.jpg" style="width:100%">
+        <div >
+          <a class="tekst" href="https://www.imdb.com/title/tt0311113/?ref_=nv_sr_srsg_1_tt_8_nm_0_q_master%2520and%2520" target="_blank">Master and Commander (2003)</a>
+        </div>
+      </div>
+      <div class="slajdovi fade">
+        <img src="static/slike/Jagten.jpg" style="width:100%">
+        <div >
+          <a class="tekst" href="https://www.imdb.com/title/tt2106476/?ref_=nv_sr_srsg_0_tt_8_nm_0_q_jagten" target="_blank">Jagten (2012)</a>
+        </div>
+      </div>
+      <div class="slajdovi fade">
+        <img src="static/slike/InBruges.jpg" style="width:100%">
+        <div>
+          <a class="tekst" href="https://www.imdb.com/title/tt0780536/?ref_=nv_sr_srsg_0_tt_8_nm_0_q_in%2520bruges" target="_blank">In Bruges (2008)</a>
+        </div>
+      </div>
+      <div class="slajdovi fade">
+        <img src="static/slike/TheDeparted.jpg" style="width:100%">
+        <div >
+          <a class="tekst" href="https://www.imdb.com/title/tt0407887/?ref_=nv_sr_srsg_0_tt_8_nm_0_q_departed" target="_blank">The Departed (2006)</a>
+        </div>
+      </div>
+      <div class="slajdovi fade">
+        <img src="static/slike/SavingPrivateRyan.png" style="width:100%">
+        <div >
+          <a class="tekst" href="https://www.imdb.com/title/tt0120815/?ref_=nv_sr_srsg_0_tt_8_nm_0_q_saving%2520" target="_blank">Saving Private Ryan (1998)</a>
+        </div>
+      </div>
+      
+      <a class="nazad" onclick="plusSlides(-1)">&#10094;</a>
+      <a class="naprijed" onclick="plusSlides(1)">&#10095;</a>
+  </div>
+  <script src="{{ url_for('static', filename='js/carousel.js')}}"></script>
+</body>
+{% endblock %}

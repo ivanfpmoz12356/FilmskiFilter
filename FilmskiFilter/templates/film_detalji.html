@@ -1,0 +1,104 @@
+{% from "macros/svgs.html" import zvijezda, olovka, kos %}
+
+{% extends "raspored.html" %}
+
+{% block head_content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/film_detalji.css') }}">
+{% endblock %}
+
+{% block main_content %}
+    <div class="kontejner">
+        <header class="film__header">
+                <div class="movie__info">
+                    <h1>{{ movie.title }}</h1>
+                    <div class="ocjena__redatelj">
+                        <h3>{{movie.director}} {{movie.year}}</h3>   
+                        <div class="film__ocjena">
+                            {% for i in range(10) %}
+                                <a class="ocjena__link film__ocjena" href="{{ url_for('pages.rate_movie', _id=movie._id, rating=i+1) }}">
+                                    {{ zvijezda("zvijezda " + ("zvijezda--filled" if movie.rating > i else "")) }}
+                                </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div> 
+            <div class="film__odgledan">
+                {% if movie.last_watched %}
+                    <p>
+                        Posljedni put odgledano:
+                        <a href="{{ url_for('pages.watch_today', _id=movie._id) }}" class="odgledan__link">
+                            <time datetime="{{ movie.last_watched }}">{{ movie.last_watched.strftime("%d %b %Y") }}</time>
+                        </a>
+                    </p>
+                {% else %}
+                    <p><a href="{{ url_for('pages.watch_today', _id=movie._id) }}" class="odgledan__link">Nije još odgledano</a></p>
+                {% endif %}
+                <a class="film__uredi" href="{{ url_for('pages.edit_movie', _id=movie._id) }}"> Uredi {{ olovka("olovka") }}</a>
+                <a id="deleteMovieLink" class="film__uredi delete-link?" href="#" data-id="{{ movie._id }}" data-target="deleteModal"> Izbriši {{ kos("kos") }}</a>
+            </div>
+            <div class="header__row">
+                <ul class="film__tagovi">
+                    {% for tag in movie.tags %}
+                        <li class="film__tag">{{ tag }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </header>
+
+        {% if movie.video_link %}
+            <iframe
+                class="film__video"
+                src="{{ movie.video_link }}"
+                title="Youtube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media gyroscope; picture-in-picture"
+                allowfullscreen>
+            </iframe>
+        {% endif %}
+
+        {% if movie.description %}
+            <p class="film__opis">{{ movie.description }}</p>
+        {% else %}
+            <p class="film__opis"> Nema još opisa. <a class="link" href="{{ url_for('pages.edit_movie', _id=movie._id) }}">Dodaj opis?</a></p>
+        {% endif %}
+        <div class="film__raspored">
+            {% if movie.cast %}
+                <div class="film__postava">
+                    <h2>Glumačka Postava</h2>
+                    <ul class="list">
+                        {% for actor in movie.cast %}
+                            <li class="list__item">{{ actor }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+            {% if movie.series | length %}
+                <div class="film__serijal">
+                    <h2>Serijal</h2>
+                    <ul class="list">
+                        {% for movie_in_series in movie.series %}
+                            <li class="list__item">{{ movie_in_series }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+<div >
+    <div id="deleteModal">
+        <div class="modal-sadrzaj">
+            <p class="modal-tekst">Jeste li sigurni da želite izbrisati film?</p>
+            <div class="modal-prozor">
+                <button id="cancelBtn" class="modal-gumb">Otkaži</button>
+                <button id="deleteBtn" class="modal-gumb" href="{{ url_for('pages.delete', _id=movie._id) }}">Izbriši</button>
+            </div>
+        </div>
+    
+        <div class="overlay" id="overlay"></div>
+    </div>
+    
+</div>
+
+
+<script src="{{ url_for('static', filename='js/modal.js')}}"></script>
+{% endblock %}

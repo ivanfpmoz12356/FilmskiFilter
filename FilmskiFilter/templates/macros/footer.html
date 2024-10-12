@@ -1,0 +1,15 @@
+{% from 'macros/svgs.html' import facebook, instagram, youtube, twitter %}
+{% macro footer() %}
+
+<link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css')}}">
+<footer class="footer">
+    <small>
+        <p>Copyright &copy; Ivan Delić</p>  
+        <a class="footer__ikona" href="https://www.facebook.com/fpmoz.ba/?locale=hr_HR" target="_blank" alt="facebook">{{ facebook("facebook") }}</a>
+        <a class="footer__ikona" href="https://www.youtube.com/@studijinformatike-fpmoz2231" target="_blank" alt="youtube">{{ youtube("youtube") }}</a>
+        <a class="footer__ikona" href="https://twitter.com/sve_mostar" target="_blank" alt="twitter">{{ twitter("twitter") }}</a>
+        <a class="footer__ikona" href="https://www.instagram.com/fpmoz.mostar/" target="_blank" alt="instagram">{{ instagram("instagram") }}</a>
+        <a target="_blank" href="https://www.sum.ba/"><img class="footer__slika" src="https://www.sum.ba/logo.png" href="https://www.sum.ba/" alt="SUM"></a> 
+    </small>
+</footer>
+{% endmacro %} 

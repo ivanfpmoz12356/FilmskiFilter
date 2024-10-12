@@ -1,0 +1,22 @@
+.footer{
+  margin-top: 10rem;
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  padding: 1rem 0;
+  color: var(--text-muted);
+  }
+
+.footer__ikona {
+  display: inline-block;
+  width: 2rem;
+  height: 2rem;
+  margin-left: 3px;
+  color: inherit;
+  }
+.footer__slika{
+  display: inline-block;
+  width: 6rem;
+  height: 2rem;
+}

@@ -1,0 +1,121 @@
+{% from 'macros/svgs.html' import mjesec, sunce, filmLogo %}
+{% macro header(email, theme) %}
+<header class="header">
+    <link rel="stylesheet" href="{{url_for ( 'static' , filename='css/dropdown.css' )}}">
+    <link rel="stylesheet" href="{{url_for ( 'static' , filename='css/responsive-plus.css' )}}">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap">
+
+    <div class="nav-kontejner">
+        <a href="{{ url_for('pages.pocetna') }}" class="header__logo">
+            {{filmLogo('filmLogo')}}
+            <span class="logo__ime"> FilmskiFilter </span>
+        </a>
+
+        <nav class="nav" id="myTopnav">
+            <form class="pretraga" method="GET" action="/search">
+                <input type="text" name="q" placeholder="Pretraži filmove..">
+            </form>
+            <a
+            href="{{ url_for('pages.pocetna')}}"
+        
+            class="nav__link {{ 'nav__link--aktivno' if request.path == url_for('pages.pocetna')}}"
+            >
+            <span class="nav__item">Početna</span>
+            </a>
+            
+            {% if not email %}     
+                <a
+                href="{{url_for('pages.login')}}"
+                class="nav__link {{ 'nav__link--aktivno' if request.path == url_for('pages.login')}}"
+                >
+                <span class="nav__item ">Prijava</span>
+                </a>
+                <a
+                href="{{ url_for('pages.register')}}"
+            
+                class="nav__link {{ 'nav__link--aktivno' if request.path == url_for('pages.register')}}"
+                >
+                <span class="nav__item">Registracija</span>
+                </a>
+            {% else %}
+                <a
+                href="{{ url_for('pages.index') }}"
+                class="nav__link {{ 'nav__link--aktivno' if request.path == url_for('pages.index')}}"
+                >
+                    <span class="nav__item">Filmovi</span>
+                </a>
+                <a
+                href="{{ url_for('pages.logout') }}"
+                class="nav__link"
+                >
+                <span class="nav__item">Odjava</span>
+                </a>
+            {% endif %}
+            <a href="javascrpt:void(0);" style="font-size:15px;" class="icon" onclick="myFunction()">&#9776;</a>
+                <div class="dropdown">
+                    
+                    <div class="dropdown__content">
+                        <a
+                        href="{{ url_for('pages.pocetna')}}"
+                    
+                        class="drop__link {{ 'drop__link--aktivno' if request.path == url_for('pages.pocetna')}}"
+                        >
+                        <span class="drop__item">Početna</span>
+                        </a>
+                        
+                        {% if not email %}     
+                            <a
+                            href="{{url_for('pages.login')}}"
+                            class="drop__link {{ 'drop__link--aktivno' if request.path == url_for('pages.login')}}"
+                            >
+                            <span class="drop__item ">Prijava</span>
+                            </a>
+                            <a
+                            href="{{ url_for('pages.register')}}"
+                        
+                            class="drop__link {{ 'drop__link--aktivno' if request.path == url_for('pages.register')}}"
+                            >
+                            <span class="drop__item">Registracija</span>
+                            </a>
+                        {% else %}
+                            <a
+                            href="{{ url_for('pages.index') }}"
+                            class="drop__link {{ 'drop__link--aktivno' if request.path == url_for('pages.index')}}"
+                            >
+                                <span class="drop__item">Filmovi</span>
+                            </a>
+                            <a
+                            href="{{ url_for('pages.logout') }}"
+                            class="drop__link"
+                            >
+                            <span class="drop__item">Odjava</span>
+                            </a>
+                        {% endif %}
+                        <a href="{{ url_for('pages.toggle_theme', current_page=request.path) }}"
+                            class="drop__link">
+                                <span class="drop__item">
+                                    {% if theme == 'dark'%}
+                                        {{ sunce("nav__ikona")}}
+                                    {% else %}
+                                        {{ mjesec("nav__ikona") }}
+                                    {% endif %}
+                                </span>
+                        </a>
+                    </div>
+                </div>
+            <a href="{{ url_for('pages.toggle_theme', current_page=request.path) }}"
+            class="nav__link">
+                <span class="nav__item">
+                    {% if theme == 'dark'%}
+                        {{ sunce("nav__ikona")}}
+                    {% else %}
+                        {{ mjesec("nav__ikona") }}
+                    {% endif %}
+                </span>
+            </a>
+
+        </nav>
+    </div>
+</header>
+<script type="text/javascript" src="{{url_for('static', filename='js/hamburger.js')}}"></script>
+{% endmacro %}

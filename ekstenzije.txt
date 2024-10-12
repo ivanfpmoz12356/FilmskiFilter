@@ -1,0 +1,9 @@
+dotenv
+flask-snippets
+isort
+jinja
+jupyter
+pylance
+python 3.12.0
+python environment manager
+python debugger

@@ -1,0 +1,32 @@
+{% from "macros/fields.html" import render_text_field %}
+
+{% extends "raspored.html" %}
+
+{% block head_content %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}">
+{% endblock %}
+
+{% block main_content %}
+    <form name="add_movie" method="post" novalidate class="form">
+        <div class="form__kontejner">
+            {{ form.hidden_tag()}}
+
+            {{ render_text_field(form.title) }}
+            {{ render_text_field(form.director) }}
+            {{ render_text_field(form.year) }}
+
+            <div class="submit--otkazi">
+                <div>
+                    <a href="{{ url_for('pages.index')}}" class="otkazi gumb gumb--form">Otkaži</a>
+                </div>
+                
+                    {{ form.submit(class_="gumb gumb--form")}}
+                
+                
+            
+            </div>
+            
+        </div>
+    </form>
+
+{% endblock %}

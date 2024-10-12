@@ -1,0 +1,38 @@
+{% extends "raspored.html" %}
+
+{% block head_content %}
+    <link rel="stylesheet" href="{{ url_for ('static', filename='css/filmovi.css') }}">
+{% endblock %}
+
+{% block main_content %}
+
+    {% if search_results %}
+        <table class="tablica">
+            <colgroup>
+                <col style="width:60%">
+                <col style="width:25%">
+                <col style="width:15%">
+            </colgroup>
+            <thead>
+                <th class="tablica__cell tablica__cell--header">Naslov</th>
+                <th class="tablica__cell tablica__cell--header">Datum izlaska</th>
+            </thead>
+            <tbody>
+                {% for movie in search_results %}
+                    <tr class="tablica__row" onclick=window.location.href="{{ url_for('pages.movie', _id=movie._id) }}";>
+                        <td class="tablica__cell">
+                            <p class="tablica__movieTitle">{{ movie.title }}</p>
+                            <p class="tablica__movieDirector">{{ movie.director }}</p>
+                        </td>
+                        <td class="tablica__cell"> {{ movie.year}} </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+
+        </table>
+    {% else  %}
+        <p class="tablica__prazno"> Nema rezultata pretrage! </p>
+    {% endif %}
+
+    <a href="{{ url_for('pages.add_movie') }}" class="gumb gumb--dodaj"> <span>+</span></a>
+{% endblock %}
