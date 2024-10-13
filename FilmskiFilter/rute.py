@@ -13,8 +13,8 @@ from flask import (
     flash
 )
 from dataclasses import asdict
-from FilmskiFilter.forms import MovieForm, ExtendedMovieForm, RegisterForm, LoginForm, SearchForm
-from FilmskiFilter.models import Movie, User
+from FilmskiFilter.forme import MovieForm, ExtendedMovieForm, RegisterForm, LoginForm, SearchForm
+from FilmskiFilter.modeli import Movie, User
 from passlib.hash import pbkdf2_sha256
 from sqlalchemy import or_
 from pymongo import TEXT
